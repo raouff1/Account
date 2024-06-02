@@ -1,0 +1,63 @@
+﻿@using CustomIdentity.ViewModels
+@model LoginVm
+
+
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-4 card p-4 shadow-sm">
+        <h2 class="text-center text-dark">Sign in</h2> <!-- Huvudrubrik i svart -->
+
+        <form asp-action="Login" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Username" class="form-control rounded-pill" placeholder="Username" />
+                <label asp-for="Username">Username</label>
+                <span asp-validation-for="Username" class="text-danger"></span>
+                
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Password" type="password" class="form-control rounded-pill" placeholder="Password" />
+                <label asp-for="Password">Password</label>
+                <span asp-validation-for="Password" class="text-danger"></span>
+               
+            </div>
+
+            <div class="form-check mb-3">
+                <input asp-for="RememberMe" class="form-check-input" />
+                <label asp-for="RememberMe" class="form-check-label">Remember me</label>
+            </div>
+
+            <div class="d-grid gap-2">
+                <input type="submit" value="Sign in" class="btn btn-dark btn-block rounded-pill" /> 
+            </div>
+
+            <div class="text-center mt-3">
+                <a asp-action="Register" class="text-decoration-none">Don't have an account?</a> 
+            </div>
+        </form>
+
+        <div class="text-center mt-3">
+            <p>Sign in with:</p>
+            <div class="d-flex justify-content-center">
+                <a href="#" class="btn btn-primary me-3">
+                    <i class="fab fa-facebook-f"></i> 
+                </a>
+                <a href="#" class="btn btn-info">
+                    <i class="fab fa-twitter"></i> 
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

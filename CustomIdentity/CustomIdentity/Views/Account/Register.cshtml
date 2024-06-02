@@ -1,0 +1,62 @@
+﻿@using CustomIdentity.ViewModels
+@model RegisterVm
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-4 card p-4 shadow-sm">
+        <h2 class="text-center text-dark">Signup</h2>
+        <h3 class="text-center mt-2">Welcome to our community</h3> 
+        <p class="text-center mb-4">Please fill in the form to create an account</p> 
+
+        <form asp-action="Sign up" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Name" class="form-control rounded-pill" placeholder="Name" />
+                <label asp-for="Name">Name</label>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Email" class="form-control rounded-pill" placeholder="Email" />
+                <label asp-for="Email">Email</label>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Password" type="password" class="form-control rounded-pill" placeholder="Password" />
+                <label asp-for="Password">Password</label>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="ConfirmPassword" type="password" class="form-control rounded-pill" placeholder="Confirm Password" />
+                <label asp-for="ConfirmPassword">Confirm Password</label>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <textarea asp-for="Address" class="form-control rounded-pill" placeholder="Address" rows="2"></textarea>
+                <label asp-for="Address">Address</label>
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+
+            <div class="d-grid gap-2">
+                <input type="submit" value="Signup" class="btn btn-dark btn-block rounded-pill" /> 
+            </div>
+
+            <div class="text-center mt-3">
+                <a asp-action="Login" class="text-decoration-none">Already have an account?</a> 
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
